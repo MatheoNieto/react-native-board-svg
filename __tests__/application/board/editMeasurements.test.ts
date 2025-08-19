@@ -1,7 +1,30 @@
 import {EditMeasurements} from '@application/useCases/board/editMeasurements';
-import {BoardEntity} from '@domain/entities/board';
+import {BoardEntity, LINE_TYPE} from '@domain/entities/board';
 import {BoardRepository} from '@domain/repositories/board';
-import {MOCK_FLASHING_DATA} from '../../mocks';
+import {FLASHINGS_DATA} from 'src';
+
+const MOCK_LINE: LINE_TYPE = {
+  points: [
+    [1, 2],
+    [2, 3],
+  ],
+  pending: 2,
+  distance: 10,
+  isLine: true,
+};
+
+const MOCK_FLASHING_DATA: FLASHINGS_DATA = {
+  dataLines: [MOCK_LINE],
+};
+
+export const REPO_MOCK = {
+  getDataDraftFlashing: jest.fn(),
+  getLineSelected: jest.fn(),
+  updateDraftFlashing: jest.fn(),
+  changeStep: jest.fn(),
+  changeIndexLineSelected: jest.fn(),
+  getStep: jest.fn(),
+} as any;
 
 jest.mock('react-native-redash', () => ({
   round: (value: number, precision: number) => {
@@ -60,8 +83,13 @@ describe('EditMeasurements', () => {
   });
 
   it('should update draft with new size and navigate to next line', () => {
-    const draft = {dataLines: [{size: 50}, {size: 60}]};
-    repoMock.getDataDraftFlashing.mockReturnValue(MOCK_FLASHING_DATA);
+    const draft = {
+      dataLines: [
+        {...MOCK_LINE, distance: 50},
+        {...MOCK_LINE, distance: 60},
+      ],
+    };
+    repoMock.getDataDraftFlashing.mockReturnValue(draft);
     repoMock.getLineSelectedIndex.mockReturnValue(0);
     repoMock.getStep.mockReturnValue(1);
 
@@ -73,8 +101,13 @@ describe('EditMeasurements', () => {
   });
 
   it('should go to previous line if goNext is false', () => {
-    const draft = {dataLines: [{distance: 50}, {distance: 60}]};
-    repoMock.getDataDraftFlashing.mockReturnValue(MOCK_FLASHING_DATA);
+    const draft = {
+      dataLines: [
+        {...MOCK_LINE, distance: 50},
+        {...MOCK_LINE, distance: 60},
+      ],
+    };
+    repoMock.getDataDraftFlashing.mockReturnValue(draft);
     repoMock.getLineSelectedIndex.mockReturnValue(1);
     repoMock.getStep.mockReturnValue(1);
 
@@ -84,8 +117,13 @@ describe('EditMeasurements', () => {
   });
 
   it('should change step if at last line and goNext is true', () => {
-    const draft = {dataLines: [{size: 50}, {size: 60}]};
-    repoMock.getDataDraftFlashing.mockReturnValue(MOCK_FLASHING_DATA);
+    const draft = {
+      dataLines: [
+        {...MOCK_LINE, distance: 50},
+        {...MOCK_LINE, distance: 60},
+      ],
+    };
+    repoMock.getDataDraftFlashing.mockReturnValue(draft);
     repoMock.getLineSelectedIndex.mockReturnValue(1);
     repoMock.getStep.mockReturnValue(2);
 
