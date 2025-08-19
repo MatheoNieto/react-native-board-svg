@@ -37,13 +37,16 @@
   "devDependencies": {
     "@types/d3-scale": "^4.0.9",
     "@types/d3-shape": "^3.1.7",
+    "@types/jest": "^30.0.0",
     "@types/react": "^19.1.8",
     "@types/react-native": "^0.73.0",
     "esbuild-plugin-copy": "^2.1.1",
+    "jest": "^30.0.5",
     "prettier": "^3.6.2",
     "react-native-gesture-handler": "^2.27.2",
     "react-native-svg": "^15.12.1",
     "rimraf": "^6.0.1",
+    "ts-jest": "^29.4.1",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
   },
@@ -52,6 +55,9 @@
   },
   "scripts": {
     "clean": "npx rimraf ./dist",
-    "build": "npm run clean && tsup"
+    "build": "npm run clean && tsup",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   }
 }
