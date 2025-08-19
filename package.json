@@ -1,0 +1,57 @@
+{
+  "name": "react-native-board-svg",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:MatheoNieto/react-native-board-svg.git"
+  },
+  "bugs": {
+    "type": "git",
+    "url": "git@github.com:MatheoNieto/react-native-board-svg/issues"
+  },
+  "author": "Mateo Nieto <matheo.developer@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-native": ">=0.72.1",
+    "react-native-gesture-handler": ">=2.12.0",
+    "react-native-svg": ">=15.12.0"
+  },
+  "dependencies": {
+    "@shopify/restyle": "^2.4.5",
+    "@svgr/core": "^8.1.0",
+    "color": "^5.0.0",
+    "d3-scale": "^4.0.2",
+    "d3-shape": "^3.2.0",
+    "dayjs": "^1.11.13",
+    "dayjs-plugin-utc": "^0.1.2",
+    "react-native-redash": "^18.1.3"
+  },
+  "devDependencies": {
+    "@types/d3-scale": "^4.0.9",
+    "@types/d3-shape": "^3.1.7",
+    "@types/react": "^19.1.8",
+    "@types/react-native": "^0.73.0",
+    "esbuild-plugin-copy": "^2.1.1",
+    "prettier": "^3.6.2",
+    "react-native-gesture-handler": "^2.27.2",
+    "react-native-svg": "^15.12.1",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "clean": "npx rimraf ./dist",
+    "build": "npm run clean && tsup"
+  }
+}
