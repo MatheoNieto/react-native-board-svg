@@ -113,10 +113,6 @@ export class BoardEntity {
   static undoPoint(flashingDataDraft: FLASHINGS_DATA) {
     const points = flashingDataDraft.dataLines.slice(0, -1);
 
-    if (points.length === 1) {
-      return flashingDataDraft;
-    }
-
     return {
       ...flashingDataDraft,
       dataLines: points,
