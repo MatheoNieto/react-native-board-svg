@@ -4,6 +4,22 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "keywords": [
+    "react-native",
+    "drawing",
+    "svg",
+    "canvas",
+    "sketching",
+    "measurement",
+    "touch",
+    "mobile",
+    "vector-graphics",
+    "drawing-board",
+    "line-drawing",
+    "interactive",
+    "cross-platform",
+    "typescript"
+  ],
   "files": [
     "dist"
   ],
